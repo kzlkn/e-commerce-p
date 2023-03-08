@@ -1,0 +1,38 @@
+$bg-col: rgb(35, 39, 46);
+$test-bg-col: rgb(34, 41, 57);
+$prim-text-col: rgb(213, 213, 213);
+$sec-text-col: darken($prim-text-col, 15%);
+
+::selection {
+	background-color: rgb(39, 59, 106);
+}
+
+body {
+	background-color: $test-bg-col;
+	background-image: linear-gradient(
+		to right,
+		darken($test-bg-col, 5%),
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		$test-bg-col,
+		darken($test-bg-col, 5%)
+	);
+	color: $prim-text-col;
+}

@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    {% if search_expr %}
+        <h2 class="headline">Your Search Results for "{{ search_expr }}"</h2>
+        {% if is_search_for_review %}
+            {% for article in article %}
+                <a href="{% url 'article-detail' article.id %}">{{ article }}<br/>
+                    <i>{{ article.average_review }}</i></a><br/>
+            {% endfor %}
+        {% else %}
+            {% for article in article %}
+                <a href="{% url 'article-detail' article.id %}"> {{ article }}<br/> -{{ article.price }}<br/> --
+                    <i>{{ article.average_review }}</i></a><br/>
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        <h4 class="headline">Something went wrong here... Did you enter anything to search for?</h4>
+    {% endif %}
+{% endblock %}

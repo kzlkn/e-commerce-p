@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Article{% endblock %}
+
+{% block content %}
+    <div id="create_article_form" class="basic-form">
+        <h2>Create Article ({{ category }})</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-lg">Create</button>
+        </form>
+    </div>
+{% endblock %}

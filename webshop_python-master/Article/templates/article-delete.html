@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block title %}Delete Article{% endblock %}
+
+{% block content %}
+        <h2 class="headline">Delete Article</h2>
+        <form method="POST" id="delete_article_form" class="basic-form">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ that_one_article.name }}"?</p>
+            <div id="delete_article_form_buttons">
+                <a href="{% url 'article-list' 'all' %}">Cancel</a>
+                <input type="submit" value="Delete">
+            </div>
+        </form>
+{% endblock %}

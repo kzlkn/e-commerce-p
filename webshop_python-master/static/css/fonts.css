@@ -1,0 +1,54 @@
+:root {
+  font-family: "Varela Round", sans-serif;
+  font-size: 1.1em;
+}
+:root button {
+  font-size: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+h1 {
+  font-size: 3.3em;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
+h2 {
+  font-size: 2.915em;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
+h3 {
+  font-size: 2.53em;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
+h4 {
+  font-size: 2.145em;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
+h5 {
+  font-size: 1.76em;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
+h6 {
+  font-size: 1.375em;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+}
+
+/*# sourceMappingURL=fonts.css.map */

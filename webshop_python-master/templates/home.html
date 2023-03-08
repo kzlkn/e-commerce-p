@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Webshop{% endblock %}
+
+{% block content %}
+    <div id="carousel_container">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img alt="Human standing on cliff by the ocean" class="d-block w-100"
+                         src={% static 'imgs/homepage/carousel/Fulfill_1.png' %}>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Fulfill Your True Potential!</h5>
+                        <p>Our products support you to overcome any obstacle</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img alt="Group of friends jumping in front of a sunset" class="d-block w-100"
+                         src={% static 'imgs/homepage/carousel/Fulfill_2.png' %}>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Learn To Fall In Love With Life</h5>
+                        <p>Get out of your comfort zone and find new meaning within yourself</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" alt="Veggie bowl and with quinoa, ginger, tomatoes and more"
+                         src={% static 'imgs/homepage/carousel/Fulfill_3.png' %}>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Nourish Your Body The Right Way</h5>
+                        <p>Boost your health with new delicious food choices</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                         alt="Computer mouse, smartphone, Xbox controller, camera, iPod and more"
+                         src={% static 'imgs/homepage/carousel/Fulfill_7.png' %}>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Increase Your Productivity With The Right Devices</h5>
+                        <p>We have the best collection of electronic helpers for any task</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                         alt="Person standing on a wooden bridge at the sea in front of a sunset"
+                         src={% static 'imgs/homepage/carousel/Fulfill_6.png' %}>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Become Happy, Strong and Healthy</h5>
+                        <p>Transcend your limitations by finding a method that works for you</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                         alt="Picture of veggie bowl and with quinoa, ginger, tomatoes and more"
+                         src={% static 'imgs/homepage/carousel/Fulfill_5.png' %}>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Small Things Can Make All The Difference</h5>
+                        <p>Browse through our immense range of different supplements</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div id="card_container">
+        <h2>Product Categories</h2>
+        <div id="product_category_cards" class="card_flex_container">
+            <a href="{% url "article-list" "all" %}">
+                <div class="card">
+                    <img alt="lotus flower" src={% static 'imgs/homepage/cards/meditation-svgrepo-com.svg' %}>
+                    <h5>All Products</h5>
+                </div>
+            </a>
+            <a href="{% url "article-list" "books" %}">
+                <div class="card">
+                    <img alt="staple of books" src={% static 'imgs/homepage/cards/books-book-svgrepo-com.svg' %}>
+                    <h5>Books</h5>
+                </div>
+            </a>
+            <a href="{% url "article-list" "electronics" %}">
+                <div class="card">
+                    <img alt="laptop" src={% static 'imgs/homepage/cards/laptop-svgrepo-com.svg' %}>
+                    <h5>Electronics</h5>
+                </div>
+            </a>
+            <a href="{% url "article-list" "superfoods" %}">
+                <div class="card">
+                    <img alt="apple, paprika and a bowl"
+                         src={% static 'imgs/homepage/cards/healthy-food-salad-svgrepo-com.svg' %}>
+                    <h5>Nutrition</h5>
+                </div>
+            </a>
+            <a href="{% url "article-list" "supplements" %}">
+                <div class="card">
+                    <img alt="3 pills" src={% static 'imgs/homepage/cards/pills-svgrepo-com.svg' %}>
+                    <h5>Supplements</h5>
+                </div>
+            </a>
+        </div>
+        <h2>About Fulfill</h2>
+        <div id="about_card_container" class="card_flex_container">
+            <a href="{% url "about" %}">
+                <div class="card">
+                    <img alt="Fulfill Logo: Sunrise above the ocean" src={% static 'imgs/fulfill-logo.svg' %}>
+                    <h5 class="homepageLink">Our Philosophy</h5>
+                </div>
+            </a>
+            <a href="{% url "signup" %}">
+                <div class="card">
+                    <img alt="Path from current location to heart"
+                         src={% static 'imgs/homepage/cards/route-start-svgrepo-com.svg' %}>
+                    <h5 class="homepageLink">Get Started</h5>
+                </div>
+            </a>
+            <div class="card">
+                <img alt="question and answer sign" src={% static 'imgs/homepage/cards/question-svgrepo-com.svg' %}>
+                <h5 class="homepageLink">FAQ</h5>
+            </div>
+            <a href="{% url "customer-support" %}">
+                <div class="card">
+                    <img alt="envelope with letter inside"
+                         src={% static 'imgs/homepage/cards/letter-svgrepo-com.svg' %}>
+                    <h5>Contact Us</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

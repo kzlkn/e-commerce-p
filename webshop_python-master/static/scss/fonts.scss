@@ -1,0 +1,41 @@
+$standard-font: "Varela Round", sans-serif;
+$headline-font: "Josefin Sans", sans-serif;
+$standard-font-size: 1.1em;
+
+:root {
+	font-family: $standard-font;
+	font-size: $standard-font-size;
+	button {
+		font-size: 1em;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Josefin Sans", sans-serif;
+}
+
+$start: 1;
+$end: 6;
+$font-max: 3;
+
+@for $i from 1 through 6 {
+	$font-size: $standard-font-size;
+	@if $font-max >=1 {
+		h#{$i} {
+			$font-size: $standard-font-size * $font-max;
+			font-size: $font-size;
+			font-family: $headline-font;
+			color: white;
+		}
+		$font-max: $font-max - 0.35;
+	} @else {
+		h#{$i} {
+			font-size: $standard-font-size;
+		}
+	}
+}

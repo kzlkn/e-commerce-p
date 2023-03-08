@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+{% block title %}Delete Comment{% endblock %}
+
+{% block logged_in_content %}
+    {% if user.id == that_one_comment.extended_user.id or user.is_superuser %}
+        <h2>Delete Comment</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ that_one_comment.title }}"?</p>
+            <a href="{% url 'article-detail' that_one_comment.get_related_article_id %}">Cancel</a><br><br>
+            <input type="submit" value="Delete">
+        </form>
+    {% else %}
+        <p>You don't have permission to perform this action</p>
+    {% endif %}
+{% endblock %}
+
+{% block not_logged_in_content %}
+    <p>You must log in to delete articles</p>
+    <a href="{% url 'login' %}">Login</a>
+{% endblock %}
+
+

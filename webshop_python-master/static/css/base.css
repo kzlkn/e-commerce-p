@@ -1,0 +1,11 @@
+::selection {
+  background-color: #273b6a;
+}
+
+body {
+  background-color: #222939;
+  background-image: linear-gradient(to right, #181e29, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #222939, #181e29);
+  color: #d5d5d5;
+}
+
+/*# sourceMappingURL=base.css.map */

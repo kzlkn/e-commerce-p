@@ -1,0 +1,306 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Article detail{% endblock %}
+
+{% block content %}
+    <header id="article_detail_header">
+        <div id="name_and_actions">
+            <h2>{{ that_one_article.name }}</h2>
+            {% if that_one_article.category == "BKS" %}
+                <img src="{% static 'imgs/categories/books_category.svg' %}" class="categoryImg">
+            {% elif that_one_article.category == "SUP" %}
+                <img src="{% static 'imgs/categories/supplements_category.svg' %}" class="categoryImg">
+            {% elif that_one_article.category == "NUT" %}
+                <img src="{% static 'imgs/categories/superfood_category.svg' %}" class="categoryImg">
+            {% else %}
+                <img src="{% static 'imgs/categories/electronics_category.svg' %}" class="categoryImg">
+            {% endif %}
+            {% if user.is_superuser %}
+                <div id="article_actions">
+                    <a href="{% url 'article-edit' that_one_article.id %}" id="edit_article">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                             class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                        </svg>
+                    </a>
+                    <a href="{% url 'article-delete' that_one_article.id %}" id="delete_article">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                             class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd"
+                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        {% if that_one_article.category == "BKS" %}
+            <span id="author_headline">by {{ related_article.author }}</span>
+        {% endif %}
+    </header>
+
+    <div id="article_detail_info_container">
+        <div id="article_detail_image_and_rating">
+
+            <img id="article_image" src="{{ related_article.image.url }}" alt="{{ that_one_article.name }}">
+
+            {% if rounded_article_rating %}
+                <img src={% static article_rating_path %}>
+            {% else %}
+                <p>Be the first one to rate this product!</p>
+            {% endif %}
+        </div>
+
+        <article id="article_infos">
+            <section id="description" class="articleInfoItem">
+                {% if that_one_article.subtitle %}
+                    <h5>{{ that_one_article.subtitle }}</h5>
+                {% else %}
+                    <h5>Description</h5>
+                {% endif %}
+                {% for paragraph in description %}
+                    <p>{{ paragraph }}</p>
+                {% endfor %}
+            </section>
+
+            {% if that_one_article.category == "BKS" %}
+                <section class="articleInfoItem">
+                    <h6>Author</h6>
+                    <p>{{ related_article.author }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Type</h6>
+                    <p>{{ related_article.get_type_display }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Pages</h6>
+                    <p>{{ related_article.pages }} Pages</p>
+                </section>
+                <section class="articleInfoItem">
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Publisher</h6>
+                    <p>{{ that_one_article.manufacturer }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>ISBN</h6>
+                    <p>{{ related_article.isbn }}</p>
+                </section>
+
+            {% elif that_one_article.category == "SUP" %}
+                <h6>Manufacturer</h6>
+                <p>{{ that_one_article.manufacturer }}</p>
+                <section class="artileInfoItem">
+                    <h6>Field Of Use</h6>
+                    <p>{{ related_article.get_field_of_use_display }}</p>
+                </section>
+                <section class="artileInfoItem">
+                    <h6>Ingredients</h6>
+                    <p>{{ related_article.ingredients }}</p>
+                </section>
+                <section class="artileInfoItem">
+                    <h6>Recommended Frequency of Use</h6>
+                    <p>{{ related_article.recommended_frequency_of_use }}</p>
+                </section>
+                <section class="artileInfoItem">
+                    <h6>Weight</h6>
+                    <p>{{ related_article.weight }}</p>
+                </section>
+
+            {% elif that_one_article.category == "ECS" %}
+                <h6>Manufacturer</h6>
+                <p>{{ that_one_article.manufacturer }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Type</h6>
+                    <p>{{ related_article.get_type_display }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Battery Life</h6>
+                    <p>{{ related_article.battery_life }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Color</h6>
+                    <p>{{ related_article.color }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Material</h6>
+                    <p>{{ related_article.material }}</p>
+                </section>
+
+            {% else %}
+                <section class="articleInfoItem">
+                    <h6>Manufacturer</h6>
+                    <p>{{ that_one_article.manufacturer }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Ingredients</h6>
+                    <p>{{ related_article.ingredients }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    <h6>Weight</h6>
+                    <p>{{ related_article.weight }}</p>
+                </section>
+                <section class="articleInfoItem">
+                    {% if related_article.vegan %}
+                        <h6 id="vegan">This product is suitable for vegans!</h6>
+                    {% endif %}
+                </section>
+            {% endif %}
+
+            <!--
+            <table>
+                <tr>
+                    <td><b>Review:</b></td>
+                    {% if that_one_article.get_average_review <= 0.5 %}
+                        <td><img src="{% static 'Article/Star_rating_0.5_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 0.5 and that_one_article.get_average_review <= 1.0 %}
+                        <td><img src="{% static 'Article/Star_rating_1_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 1.0 and that_one_article.get_average_review <= 1.5 %}
+                        <td><img src="{% static 'Article/Star_rating_1.5_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 1.5 and that_one_article.get_average_review <= 2.0 %}
+                        <td><img src="{% static 'Article/Star_rating_2_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 2.0 and that_one_article.get_average_review <= 2.5 %}
+                        <td><img src="{% static 'Article/Star_rating_2.5_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 2.5 and that_one_article.get_average_review <= 3.0 %}
+                        <td><img src="{% static 'Article/Star_rating_3_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 3.0 and that_one_article.get_average_review <= 3.5 %}
+                        <td><img src="{% static 'Article/Star_rating_3.5_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 3.5 and that_one_article.get_average_review <= 4.0 %}
+                        <td><img src="{% static 'Article/Star_rating_4_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 4.0 and that_one_article.get_average_review <= 4.5 %}
+                        <td><img src="{% static 'Article/Star_rating_4.5_of_5.png' %}" height="20" width="100"><br></td>
+                    {% elif that_one_article.get_average_review > 4.5 and that_one_article.get_average_review <= 5.0 %}
+                        <td><img src="{% static 'Article/Star_rating_5_of_5.png' %}" height="20" width="100"><br></td>
+                    {% else %}
+                        <td>no reviews available<br></td>
+                    {% endif %}
+                    <td>{{ that_one_article.get_average_review }}</td>
+                </tr>
+            </table>
+            -->
+        </article>
+        <div id="article_action_container">
+
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" name="add-to-shopping-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                         class="bi bi-cart-plus"
+                         viewBox="0 0 16 16">
+                        <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    Add to Shopping Cart
+                </button>
+            </form>
+
+            <a id="pdf_download_button" href="{% url 'article-pdf' that_one_article.get_related_article_id %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                     class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
+                </svg>
+                Download Information
+            </a>
+            <p id="delivery_in">
+                Free Delivery in {{ that_one_article.deliveryIn }}!
+            </p>
+            <h2 id="article_price">{{ that_one_article.price }}</h2>
+            <!-- If Statement adds class if article is almost sold out to change the color to red-->
+            <p id="items_left"
+                    {% if that_one_article.quantity <= 10 %}
+               class="lowQuantity"
+                    {% endif %}
+            >
+                {% if that_one_article.quantity <= 10 %}
+                    Only
+                {% endif %}
+                {{ that_one_article.quantity }} items left in Stock.
+            </p>
+        </div>
+    </div>
+
+    <div id="article_comment_container">
+        <h2>Customer Reviews</h2>
+
+        {% for comment in comments_for_that_one_article %}
+            <div class="article_comment">
+                <div class="commentUserNameAndTimestamp">
+                    <span class="userName"><b>{{ comment.extended_user.get_full_name_of_user }}</b></span>
+                    on {{ comment.timestamp }}
+                </div>
+
+                <div class="commentActions">
+                    {% if user.id == comment.extended_user_id or user.is_superuser %}
+                        <a href="{% url 'comment-edit' comment.id %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                                 class="bi bi-pencil editArticleButton" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg></a>
+                    {% endif %}
+
+                    {% if user.id == comment.extended_user_id %}&nbsp;
+                        <a href="{% url 'comment-delete' comment.id %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                                 class="bi bi-trash deleteArticleButton" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd"
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </a>
+                    {% endif %}
+                </div>
+
+                {% if comment.article_review == '1' %}
+                    <img src="{% static 'Article/Star_rating_1.0_of_5.png' %}" height="20" width="100">
+                {% elif comment.article_review == '2' %}
+                    <img src="{% static 'Article/Star_rating_2.0_of_5.png' %}" height="20" width="100">
+                {% elif comment.article_review == '3' %}
+                    <img src="{% static 'Article/Star_rating_3.0_of_5.png' %}" height="20" width="100">
+                {% elif comment.article_review == '4' %}
+                    <img src="{% static 'Article/Star_rating_4.0_of_5.png' %}" height="20" width="100">
+                {% elif comment.article_review == '5' %}
+                    <img src="{% static 'Article/Star_rating_5.0_of_5.png' %}" height="20" width="100">
+                {% endif %}
+                &nbsp;
+                <b class="commentTitle">{{ comment.title }}</b>
+                <div class="commentText">
+                    {{ comment.text }}
+                </div>
+
+                <span style="color: aquamarine">{{ comment.get_upvotes_count }}</span>
+                <a href="{% url 'comment-vote' comment.id 'up' %}" style="text-decoration: none">
+                    <img src="{% static 'Article/arrow_up.png' %}" height="20" width="20">
+                </a>
+
+                <span style="color: crimson">{{ comment.get_downvotes_count }}</span>
+                <a href="{% url 'comment-vote' comment.id 'down' %}" style="text-decoration: none">
+                    <img src="{% static 'Article/arrow_down.png' %}" height="20" width="20">
+                </a>
+                &nbsp;
+                {% if comment.get_report %}
+                    <img src="{% static 'Article/report_icon.png' %}" height="20" width="20">(abuse reported)
+                {% endif %}
+
+                {% if not comment.get_report and user.id != comment.extended_user_id %}
+                    <a style="color: crimson" href="{% url 'comment-report' comment.id 'true' %}">Report Comment</a><br>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="article_comment_form">
+        {% if user_has_commented %}
+            <b>You have already commented this Article.</b>
+        {% else %}
+            <b>Do you have a comment for this Article?</b><br>
+            <form method="POST" class="basic-form">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button class="btn btn-success btn-lg">Submit comment</button>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

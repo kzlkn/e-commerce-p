@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+{% block content %}
+    <h1 class="headline" id="about_fulfill_headline">About Fulfill</h1>
+    <div id="about_fulfill">
+        <img src="{% static "imgs/fulfill-logo.svg" %}" alt="fulfill-logo">
+
+        <div id="our_philosophy">
+            <h5>Our Philosophy</h5>
+            <p>
+                The team of Fulfill has made it its purpose to help you on your journey through life no matter where you
+                are right now.
+            </p>
+            <p>
+                The products on this website are supposed to:
+            <ul>
+                <li>Help you regain control over your life when you feel like you have lost your way</li>
+                <li>Find happiness wherever you are</li>
+                <li>Make it as easy as possible to become the best version of yourself (because life is hard enough as
+                    it is)
+                </li>
+                <li>Perfect your workflow</li>
+                <li>Show you how to change when you do not know how</li>
+                <li>Overcome any obstacle and transcend your limits</li>
+                <li>Improve your health, energy and general wellbeing</li>
+            </ul>
+            </p>
+            <p>
+                Fulfill is not here to promote stuff with the sole purpose of getting your money. We want you to fall in
+                love with life by becoming happy, strong and healthy.
+                Ask yourself what it is you want to achieve and then take a look around the articles and see if anything
+                might help you to scale the summit.
+            </p>
+            <p>And if you feel comfortable and confident that you can achieve this
+                without any help from us that’s perfectly fine as well.
+
+            </p>
+            <h5>Developed by: </h5>
+            <span>Hendrik Denner, Özkan Kizilkan, Florian Kerl</span>
+        </div>
+    </div>
+{% endblock %}

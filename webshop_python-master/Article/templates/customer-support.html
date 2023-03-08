@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block title %}Customer Support{% endblock %}
+<h2>Customer Support</h2>
+
+{% block content %}
+    <div class="basic-form">
+        <h2>Contact us!</h2><br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-lg">Submit Inquiry</button>
+        </form>
+    </div>
+{% endblock %}

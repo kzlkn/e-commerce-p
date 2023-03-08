@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+{% block title %}Edit Comment{% endblock %}
+<h2>Edit Comment</h2>
+
+{% block content %}
+    <h2>Edit here</h2><br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+    <br><br>
+{% endblock %}

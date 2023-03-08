@@ -1,0 +1,1215 @@
+@use "reset";
+@use "base";
+@use "fonts";
+
+$bg-col: rgb(35, 39, 46);
+$test-bg-col: rgb(34, 41, 57);
+$prim-text-col: rgb(213, 213, 213);
+$sec-text-col: darken($prim-text-col, 15%);
+
+footer {
+	text-align: center;
+
+	p {
+		margin: 1em auto;
+		padding: 1em;
+	}
+}
+
+#shopping-cart-navbar {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	position: relative;
+	margin: 0 1em;
+	transition: all 0.35s ease-in-out;
+
+	#shopping_cart {
+		text-decoration: none;
+		color: #cea243;
+		z-index: 1;
+		transition: all 0.3s ease-in-out;
+	}
+
+	#number_of_cart_items {
+		position: absolute;
+		padding: 0.45em;
+		transform: translateY(1px);
+		transform: translateX(1px);
+		font-family: "Josefin Sans", sans-serif;
+		font-size: 0.9em;
+		color: rgb(206, 162, 67);
+	}
+}
+
+#search {
+	margin: 0 1em;
+	@media only screen and (max-width: 1228px) {
+		width: 35%;
+	}
+	@media only screen and (max-width: 1087px) {
+		width: 30%;
+	}
+	@media only screen and (max-width: 991px) {
+		width: 90%;
+	}
+}
+
+.m-5 {
+	margin: 5px !important;
+}
+
+.navbar-dark {
+	$navbar-border-col: rgba(18, 21, 27, 0.5);
+	$navbar-middle-col: rgba(7, 8, 11, 0.8);
+
+	background: linear-gradient(
+		$navbar-border-col,
+		$navbar-middle-col,
+		$navbar-middle-col,
+		$navbar-border-col
+	);
+	border-bottom: 1.5px solid rgb(80, 80, 80);
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+		rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+		rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+	.nav-item {
+		@media only screen and (max-width: 1243px) {
+			font-size: 0.95rem;
+		}
+		@media only screen and (max-width: 1033px) {
+			font-size: 0.85rem;
+		}
+		@media only screen and (max-width: 991px) {
+			font-size: 1.1rem;
+			text-align: center;
+		}
+	}
+	a {
+		@media only screen and (max-width: 991px) {
+			font-size: 1.1rem;
+			margin: auto;
+		}
+	}
+	.btn-secondary {
+		@media only screen and (max-width: 991px) {
+			margin: 0.5em 0;
+			width: 100%;
+		}
+	}
+}
+
+.headline {
+	margin: 1em 0 0 1em;
+}
+
+#about_fulfill_headline {
+	@media only screen and (max-width: 1000px) {
+		text-align: center;
+		margin: 1em auto 0 auto;
+	}
+}
+
+#about_fulfill {
+	padding: 0 3em;
+	margin: 1em auto;
+	display: grid;
+	grid-template-areas: "img text text";
+	width: 90%;
+	@media only screen and (max-width: 1150px) {
+		padding: 0 2em;
+	}
+	@media only screen and (max-width: 1000px) {
+		padding: 0 2em;
+		grid-template-areas:
+			"img"
+			"text";
+	}
+	@media only screen and (max-width: 650px) {
+		padding: 0;
+	}
+
+	img {
+		grid-area: img;
+		height: 60vh;
+		margin: 1em;
+		display: block;
+		@media only screen and (max-width: 1150px) {
+			height: 400px;
+		}
+		@media only screen and (max-width: 1000px) {
+			height: 60vh;
+			margin: 1em auto;
+		}
+	}
+
+	#our_philosophy {
+		grid-area: text;
+		padding: 2em;
+		font-size: 1.1em;
+		line-height: 1.65em;
+		@media only screen and (max-width: 1200px) {
+			padding: 1em;
+		}
+		@media only screen and (max-width: 800px) {
+			padding: 0.5em 0 0 0;
+		}
+	}
+}
+
+#carousel_container {
+	padding: 2em;
+	margin: auto;
+	width: 85%;
+
+	#carouselExampleCaptions {
+		-webkit-box-shadow: 0px 5px 10px 14px rgba(24, 26, 31, 0.4);
+		box-shadow: 0px 5px 10px 14px rgba(24, 26, 31, 0.4);
+	}
+
+	.carousel-caption.d-none.d-md-block {
+		background-color: rgba(24, 26, 31, 0.7);
+		border-radius: 3px;
+	}
+
+	@media only screen and (max-width: 1100px) {
+		width: 90%;
+	}
+	@media only screen and (max-width: 900px) {
+		width: 95%;
+	}
+	@media only screen and (max-width: 800px) {
+		padding: 1em;
+		width: 100%;
+	}
+}
+
+#card_container {
+	$card-bg-col: rgb(190, 190, 190);
+	$card-text-col: rgb(80, 80, 80);
+
+	margin-top: 0.5em;
+
+	h2 {
+		text-align: center;
+	}
+	#product_category_cards {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+
+		@media only screen and (max-width: 1200px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@media only screen and (max-width: 735px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media only screen and (max-width: 505px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+	#about_card_container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+
+		@media only screen and (max-width: 1106px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media only screen and (max-width: 570px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	.card_flex_container {
+		padding: 1em;
+
+		a {
+			text-decoration: none;
+		}
+		.card {
+			margin: 1em 0.75em;
+			padding: 1.5em;
+			background: lighten($sec-text-col, 10%);
+			border-radius: 15px;
+			opacity: 90%;
+			transition: all 0.35s ease;
+
+			h5 {
+				text-align: center;
+				margin: 1em 0 0 0;
+				color: darken($sec-text-col, 35%);
+				font-size: 1.65em;
+			}
+			img {
+				width: 150px;
+				margin: 0 auto;
+			}
+			@media only screen and (max-width: 1282px) {
+				h5 {
+					font-size: 1.45em;
+				}
+			}
+		}
+		.card:hover {
+			transform: scale(1.05);
+			opacity: 100%;
+			h5 {
+				color: darken($sec-text-col, 45%);
+			}
+		}
+	}
+}
+
+.basic-form {
+	width: 50%;
+	margin: 2em auto;
+	text-align: left;
+	border: 1.5px solid rgba(169, 169, 169, 0.3);
+	border-radius: 5px;
+	padding: 2em;
+	background: lighten($bg-col, 1.5%);
+
+	@media only screen and (max-width: 1200px) {
+		width: 60%;
+	}
+	@media only screen and (max-width: 1000px) {
+		width: 75%;
+	}
+	@media only screen and (max-width: 800px) {
+		width: 85%;
+	}
+	@media only screen and (max-width: 600px) {
+		width: 95%;
+	}
+	label {
+		display: block;
+		font-size: 1.2em;
+	}
+	input {
+		width: 100%;
+		height: 6vh;
+		margin: 0.5em 0;
+		padding: 0.5em;
+		border: 1px solid darkgray;
+		border-radius: 1px;
+		background: darken($bg-col, 5%);
+		color: $prim-text-col;
+		transition: all 0.35s ease;
+	}
+	input:focus {
+		border-radius: 10px;
+		border-width: 3px;
+		outline: none;
+		border-color: darkgray;
+		background: lighten($bg-col, 0.5%);
+	}
+	button {
+		width: 100%;
+	}
+	select {
+		width: 100%;
+		margin: 0.5em 0;
+		height: 6vh;
+		border: 1px solid darkgray;
+		border-radius: 1px;
+		background: darken($bg-col, 5%);
+		color: $prim-text-col;
+		padding: 0.5em;
+	}
+	input[type="file"] {
+		height: 7.5vh;
+	}
+	textarea {
+		width: 100%;
+		margin: 0.5em 0;
+		border: 1px solid darkgray;
+		border-radius: 1px;
+		background: darken($bg-col, 5%);
+		color: $prim-text-col;
+		padding: 0.5em;
+	}
+}
+
+#article_list_header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 1em 2em 0.5em 2em;
+	margin: 0 1em;
+
+	.articleListNavItem {
+		cursor: pointer;
+		padding: 0.5em 3em;
+		border-radius: 10px 10px 5px 5px;
+		transition: all 0.35s ease;
+		@media only screen and (max-width: 870px) {
+			padding: 0.5em 2em;
+		}
+		@media only screen and (max-width: 735px) {
+			padding: 0.5em 1em;
+		}
+		@media only screen and (max-width: 470px) {
+			padding: 0.5em 0.75em;
+		}
+		img {
+			width: 75px;
+			@media only screen and (max-width: 590px) {
+				width: 65px;
+			}
+			@media only screen and (max-width: 530px) {
+				width: 60px;
+			}
+			@media only screen and (max-width: 420px) {
+				width: 55px;
+			}
+		}
+		#all_list_icon {
+			padding: 0.65em;
+		}
+	}
+	.articleListNavItem:hover {
+		background-color: darken($test-bg-col, 2.5%);
+		border-bottom: 5px solid #8a8fb0;
+	}
+	.articleListNavItem.isShown {
+		background-color: darken($test-bg-col, 5%);
+		border-bottom: 5px solid #8a8fb0;
+	}
+}
+
+#article_list_item_container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	padding: 1em 2em;
+
+	@media only screen and (max-width: 1000px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media only screen and (max-width: 640px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.articleListItem {
+		margin: 0.5em;
+		padding: 0.75em;
+		display: flex;
+		position: relative;
+		flex-flow: column wrap;
+		background-color: darken(rgba(34, 41, 57, 0.5), 5%);
+		border-radius: 10px;
+		transition: all 0.35s ease;
+
+		.articleItemImage {
+			height: 235px;
+			margin: 0 auto;
+			display: block;
+			box-shadow: -1px -2px 42px 6px rgba(0, 0, 0, 0.35);
+			-webkit-box-shadow: -1px -2px 42px 6px rgba(0, 0, 0, 0.35);
+			-moz-box-shadow: -1px -2px 42px 6px rgba(0, 0, 0, 0.35);
+			opacity: 90%;
+			transition: all 0.35s ease-in-out;
+		}
+		.articleItemImage:hover {
+			transform: scale(1.05);
+			opacity: 100%;
+		}
+		.articleListItemEditAndDelete {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: flex;
+			flex-flow: column wrap;
+			margin: 1em;
+			opacity: 0%;
+
+			svg {
+				padding: 0.25em 0;
+				margin: 0.15em 0;
+				color: $prim-text-col;
+				cursor: pointer;
+				transition: all 0.25s ease-in-out;
+			}
+			svg:hover {
+				transform: scale(1.1);
+			}
+			.editArticleButton:hover {
+				background-color: rgba(35, 143, 48, 0.8);
+				color: $prim-text-col;
+				border-radius: 3px;
+			}
+			.deleteArticleButton:hover {
+				background-color: rgba(158, 35, 35, 0.8);
+				color: $prim-text-col;
+				border-radius: 3px;
+			}
+		}
+		.articleListItemInfos {
+			margin: 1em 0 0.5em 0;
+			a {
+				color: rgb(180, 180, 255);
+				transition: all 0.2s ease;
+				text-decoration: none;
+			}
+			a:hover {
+				color: rgb(125, 125, 200);
+			}
+			.price {
+				font-size: 1.25em;
+				margin-right: 1em;
+				font-weight: bold;
+				color: rgb(206, 162, 67);
+				text-align: left;
+			}
+
+			.categoryAndCreator {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: flex-start;
+				align-items: center;
+
+				.categoryImg {
+					fill: #838699;
+					height: 30px;
+					margin: 0 0.4em 0 0;
+				}
+			}
+		}
+
+		.priceAndCart {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			margin: 0.5em 0em;
+			margin-top: auto;
+			color: rgb(206, 162, 67);
+
+			span {
+				font-size: 1.25em;
+				font-weight: bold;
+				margin-right: 0.5em;
+			}
+			button {
+				background: none;
+				border: none;
+				color: rgb(206, 162, 67);
+				transition: all 0.3s ease-in-out;
+			}
+			button:hover {
+				transform: scale(1.1);
+				color: lighten(rgb(206, 162, 67), 15%);
+			}
+		}
+	}
+	.articleListItem:hover {
+		background-color: darken(rgba(34, 41, 57, 1), 5%);
+		img {
+			opacity: 95%;
+		}
+		.articleListItemEditAndDelete {
+			opacity: 100%;
+		}
+	}
+}
+
+#delete_article_form {
+	margin: 2em 3em;
+
+	#delete_article_form_buttons {
+		display: flex;
+		flex-direction: row;
+		input,
+		a {
+			width: 45%;
+			border-radius: 5px;
+			transition: all 0.35s ease;
+			margin: 0.5em;
+		}
+		a {
+			text-decoration: none;
+			height: 6vh;
+			padding: 0.5em;
+			border: 1px solid darkgray;
+			border-radius: 5px;
+			text-align: center;
+			background: #181b20;
+			color: #cbcbcb;
+			transition: all 0.35s ease;
+		}
+		input {
+			background: rgba(158, 35, 35, 0.5);
+		}
+		input:hover {
+			background: rgb(158, 35, 35);
+		}
+		a:hover,
+		input:hover {
+			transform: scale(1.05);
+		}
+	}
+}
+
+#article_detail_header {
+	padding: 1em 2em;
+	margin: 1em 1em 0 1em;
+	#name_and_actions {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: flex-start;
+
+		h2 {
+			margin-bottom: 0;
+		}
+		.categoryImg {
+			height: 60px;
+			margin: 0 1em;
+			margin-right: 2em;
+		}
+
+		#article_actions {
+			display: flex;
+			flex-direction: row;
+
+			svg {
+				padding: 0.45em 0;
+				margin: 0.15em 0;
+				color: darken($prim-text-col, 5%);
+				transition: all 0.25s ease;
+			}
+			svg:hover {
+				transform: scale(1.1);
+			}
+			#edit_article {
+				margin-right: 0.5em;
+			}
+			#delete_article {
+				margin-left: 0.5em;
+			}
+			#edit_article:hover {
+				background: rgba(35, 143, 48, 0.5);
+				border-radius: 3px;
+			}
+			#delete_article:hover {
+				background: rgba(158, 35, 35, 0.5);
+				color: $prim-text-col;
+				border-radius: 3px;
+			}
+		}
+	}
+	span {
+		font-size: 1.5em;
+		color: $sec-text-col;
+	}
+}
+
+#article_detail_info_container {
+	padding: 0 2em;
+	margin: 1em;
+	display: grid;
+	grid-template-areas:
+		"image infos interactions"
+		"image infos interactions"
+		"image infos interactions";
+
+	@media only screen and (max-width: 1100px) {
+		grid-template-areas:
+			"image infos"
+			"image infos"
+			"image interactions";
+	}
+	@media only screen and (max-width: 750px) {
+		grid-template-areas:
+			"image image"
+			"infos infos"
+			"interactions interactions";
+		padding: 0 1em;
+	}
+
+	#article_detail_image_and_rating {
+		grid-area: image;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		position: sticky;
+		top: 6em;
+		align-self: flex-start;
+		height: auto;
+		padding-right: 1em;
+
+		@media only screen and (max-width: 750px) {
+			position: static;
+		}
+
+		#article_image {
+			width: 300px;
+			z-index: -1;
+			border-radius: 2px;
+			box-shadow: -1px 15px 45px 15px rgba(0, 0, 0, 0.54);
+			-webkit-box-shadow: -1px 15px 45px 15px rgba(0, 0, 0, 0.54);
+			-moz-box-shadow: -1px 15px 45px 15px rgba(0, 0, 0, 0.54);
+
+			@media only screen and (max-width: 1300px) {
+				width: 270px;
+			}
+			@media only screen and (max-width: 1250px) {
+				width: 235px;
+			}
+			@media only screen and (max-width: 950px) {
+				width: 200px;
+			}
+			@media only screen and (max-width: 750px) {
+				width: 280px;
+				margin: auto;
+			}
+		}
+		img:nth-child(2) {
+			margin: 2em auto;
+			width: 150px;
+		}
+		p {
+			margin: 1em auto;
+		}
+	}
+
+	#article_infos {
+		grid-area: infos;
+		padding: 0 2em;
+		z-index: 1;
+
+		@media only screen and (max-width: 1200px) {
+			padding: 0 1em;
+		}
+		@media only screen and (max-width: 600px) {
+			padding: 0 0.5em;
+		}
+		h5 {
+			text-align: left;
+		}
+		h6 {
+			font-size: 1.15em;
+		}
+
+		#description {
+			text-align: justify;
+		}
+		.articleInfoItem {
+			line-height: 1.65em;
+			font-size: 1em;
+
+			#vegan {
+				color: rgb(136, 211, 136);
+			}
+		}
+	}
+
+	#article_action_container {
+		grid-area: interactions;
+		position: sticky;
+		top: 6em;
+		align-self: flex-start;
+		$gold-col: rgb(240, 173, 28);
+
+		@media only screen and (max-width: 1100px) {
+			button:hover {
+				transform: scale(1.025);
+			}
+		}
+
+		button {
+			background: none;
+			width: 100%;
+			border: none;
+			margin: 1em auto;
+			margin-top: 0;
+			font-size: 1.25em;
+			text-align: center;
+			color: $gold-col;
+			padding: 0.5em;
+			border: 2px solid $gold-col;
+			border-radius: 5px;
+			transition: all 0.35s ease-in-out;
+		}
+		button:hover {
+			transform: scale(1.1);
+			background: $gold-col;
+			border-color: rgb(60, 43, 8);
+			color: rgb(60, 43, 8);
+
+			@media only screen and (max-width: 1100px) {
+				transform: scale(1.025);
+			}
+		}
+		#pdf_download_button {
+			color: $prim-text-col;
+			width: 100%;
+			text-decoration: none;
+			padding: 0.5em;
+			font-size: 1.25em;
+			text-align: center;
+			display: block;
+			border: 2px solid $prim-text-col;
+			border-radius: 5px;
+			transition: all 0.35s ease-in-out;
+		}
+		#pdf_download_button:hover {
+			transform: scale(1.1);
+			background: $prim-text-col;
+			color: rgb(35, 39, 46);
+			@media only screen and (max-width: 1100px) {
+				transform: scale(1.025);
+			}
+		}
+
+		#article_price {
+			color: $gold-col;
+			text-align: center;
+		}
+		#delivery_in {
+			margin-top: 1em;
+			text-align: center;
+		}
+		#items_left {
+			margin: 0;
+			text-align: center;
+		}
+		#items_left.lowQuantity {
+			color: rgb(238, 81, 81);
+		}
+	}
+}
+
+#article_comment_container {
+	margin: 1em;
+	padding: 0 2em;
+
+	.article_comment {
+		background-color: darken($bg-col, 2.5%);
+		padding: 2em;
+		border-radius: 5px;
+		border: 1px solid rgba(169, 169, 169, 0.5);
+		margin: 2em 0;
+		position: relative;
+		.commentUserNameAndTimestamp {
+			font-size: 0.95em;
+			color: $sec-text-col;
+			.userName {
+				color: rgb(156, 237, 186);
+			}
+		}
+		.commentActions {
+			position: absolute;
+			top: 2em;
+			right: 2em;
+
+			svg {
+				padding: 0.25em 0;
+				margin: 0.15em 0;
+				color: $prim-text-col;
+				cursor: pointer;
+				transition: all 0.25s ease-in-out;
+			}
+			svg:hover {
+				transform: scale(1.1);
+			}
+			.editArticleButton:hover {
+				background-color: rgba(35, 143, 48, 0.8);
+				color: $prim-text-col;
+				border-radius: 3px;
+			}
+			.deleteArticleButton:hover {
+				background-color: rgba(158, 35, 35, 0.8);
+				color: $prim-text-col;
+				border-radius: 3px;
+			}
+		}
+		.commentTitle {
+			font-size: 1.1em;
+		}
+		.commentText {
+			margin: 1em 0;
+		}
+	}
+}
+
+#article_comment_form {
+	padding: 0 2em;
+	margin: 1em;
+	form {
+		margin: 2em 0;
+	}
+
+	@media only screen and (max-width: 800px) {
+		width: 100%;
+	}
+	@media only screen and (max-width: 750px) {
+		padding: 0 1em;
+	}
+}
+
+#shopping_cart_overview {
+	padding: 0 2em;
+	margin: 1em;
+	display: flex;
+	flex-flow: row nowrap;
+	@media only screen and (max-width: 783px) {
+		flex-flow: column nowrap;
+	}
+
+	#shopping_cart_item_container {
+		display: flex;
+		flex-flow: column wrap;
+		width: 60%;
+		margin: 1em 0;
+
+		@media only screen and (max-width: 1100px) {
+			width: 75%;
+		}
+		@media only screen and (max-width: 950px) {
+			width: 100%;
+		}
+		.shoppingCartItem {
+			padding: 2em;
+			border-radius: 10px;
+			border: 1px solid $sec-text-col;
+			background-color: darken($bg-col, 2.5%);
+			margin-bottom: 1.5em;
+
+			.mainInfos {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: space-between;
+				align-items: center;
+				a {
+					text-decoration: none;
+					width: 80%;
+				}
+				h5 {
+					color: rgb(180, 180, 255);
+					transition: all 0.2s ease;
+					@media only screen and (max-width: 1000px) {
+						font-size: 1.45em;
+					}
+				}
+				h5:hover {
+					color: rgb(125, 125, 200);
+				}
+				.removeFromCartButton {
+					margin: 1em auto;
+					color: $sec-text-col;
+					background: none;
+					padding: 0.5em;
+					font-size: 1em;
+					text-align: center;
+					display: block;
+					border: none;
+					transition: all 0.35s ease-in-out;
+				}
+				.removeFromCartButton:hover {
+					color: $prim-text-col;
+					transform: scale(1.05);
+					border-radius: 5px;
+					background: darken(rgb(208, 80, 80), 30%);
+					border-color: darken(rgb(208, 80, 80), 30%);
+				}
+			}
+			.sideInfos {
+				display: flex;
+				flex-direction: row;
+				align-items: stretch;
+
+				img {
+					width: 125px;
+					margin: 0em 1em 1em 0;
+				}
+				.priceAndQuantity {
+					display: flex;
+					flex-direction: column;
+					align-content: space-around;
+					justify-content: center;
+
+					button {
+						background: none;
+						border: none;
+					}
+					label {
+						font-weight: 500;
+						font-size: 1.1em;
+						display: block;
+						margin: 0.5em 0 0.5em 0;
+					}
+
+					.itemPrice {
+						font-size: 1.35em;
+						margin-right: 1em;
+						font-weight: bold;
+						color: rgb(206, 162, 67);
+						text-align: left;
+						border-bottom: 1.5px solid darkgrey;
+					}
+					.quantityControls {
+						display: flex;
+						flex-direction: row;
+						align-content: center;
+
+						input {
+							width: 40px;
+							padding: 0.25em;
+							text-align: center;
+							color: $prim-text-col;
+							background: lighten($bg-col, 5%);
+							border: 1px solid rgba(169, 169, 169, 0.5);
+						}
+						button {
+							color: darkgrey;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#shopping_cart_action_and_amount_container {
+		display: flex;
+		flex-direction: column;
+		padding: 2em;
+		margin: 0 auto;
+		position: sticky;
+		top: 4.5em;
+		align-self: flex-start;
+		@media only screen and (max-width: 550px) {
+			padding: 2em 0.5em;
+		}
+
+		h5 {
+			color: rgb(240, 173, 28);
+			text-align: center;
+		}
+		#shopping_cart_actions {
+			$gold-col: rgb(206, 162, 67);
+			text-align: center;
+			svg {
+				margin: 0.25em;
+			}
+			button {
+				background: none;
+				border: none;
+				width: 65%;
+				margin: 1em auto;
+				margin-top: 0;
+				font-size: 1.25em;
+				text-align: left;
+				color: $gold-col;
+				padding: 0.6em;
+				border: 2px solid $gold-col;
+				border-radius: 5px;
+				text-align: center;
+				transition: all 0.35s ease-in-out;
+				@media only screen and (max-width: 1100px) {
+					width: 100%;
+				}
+				@media only screen and (max-width: 817px) {
+					font-size: 1.15em;
+				}
+			}
+			button:hover {
+				transform: scale(1.1);
+				background: rgb(240, 173, 28);
+				border-color: rgb(60, 43, 8);
+				color: rgb(60, 43, 8);
+			}
+			#empty_cart_button {
+				color: $prim-text-col;
+				border: 2px solid $prim-text-col;
+			}
+			#empty_cart_button:hover {
+				background: $prim-text-col;
+				color: rgb(35, 39, 46);
+				border-color: rgb(35, 39, 46);
+			}
+			a {
+				color: $prim-text-col;
+				text-decoration: none;
+				padding: 0.6em;
+				font-size: 1.25em;
+				margin: auto;
+				width: 65%;
+				text-align: center;
+				display: block;
+				border: 2px solid $prim-text-col;
+				border-radius: 5px;
+				transition: all 0.35s ease-in-out;
+				@media only screen and (max-width: 1100px) {
+					width: 100%;
+				}
+				@media only screen and (max-width: 817px) {
+					font-size: 1.15em;
+				}
+			}
+			a:hover {
+				transform: scale(1.1);
+				background: darken($bg-col, 2.5%);
+			}
+		}
+	}
+}
+
+#checkout {
+	padding: 2em 2em;
+	margin: 1em 3em;
+	width: 60%;
+	@media only screen and (max-width: 1000px) {
+		width: 75%;
+	}
+	@media only screen and (max-width: 780px) {
+		width: 85%;
+		margin: 1em 1em;
+	}
+	.headline {
+		margin: 1em 1em;
+	}
+
+	#checkout_actions_container {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: stretch;
+		align-content: center;
+		$gold-col: rgb(206, 162, 67);
+		@media only screen and (max-width: 689px) {
+			flex-direction: column;
+		}
+
+		svg {
+			margin: 0.25em;
+		}
+		button {
+			background: none;
+			border: none;
+			margin: 1em auto;
+			width: 30%;
+			font-size: 1.15em;
+			color: $gold-col;
+			padding: 0.5em 1em;
+			border: 2px solid $gold-col;
+			border-radius: 5px;
+			transition: all 0.35s ease-in-out;
+			@media only screen and (max-width: 1400px) {
+				width: 45%;
+			}
+			@media only screen and (max-width: 689px) {
+				width: 80%;
+			}
+		}
+		button:hover {
+			transform: scale(1.1);
+			background: rgb(240, 173, 28);
+			border-color: rgb(60, 43, 8);
+			color: rgb(60, 43, 8);
+		}
+		a {
+			color: $prim-text-col;
+			text-decoration: none;
+			font-size: 1.15em;
+			width: 30%;
+			padding: 0.5em 1em;
+			margin: 1em auto;
+			text-align: center;
+			border: 2px solid $prim-text-col;
+			border-radius: 5px;
+			transition: all 0.35s ease-in-out;
+			@media only screen and (max-width: 1400px) {
+				width: 45%;
+			}
+			@media only screen and (max-width: 689px) {
+				width: 80%;
+			}
+		}
+		a:hover {
+			transform: scale(1.1);
+			background: darken($bg-col, 2.5%);
+		}
+	}
+}
+
+#user_profile_header {
+	display: flex;
+	flex-direction: row;
+
+	a {
+		color: $sec-text-col;
+		margin-top: 3.5em;
+		margin-left: 1em;
+		transition: all 0.35s ease;
+	}
+	a:hover {
+		color: darken($sec-text-col, 15%);
+		transform: scale(1.05);
+	}
+}
+
+#user_profile {
+	padding: 0 2em;
+	margin: 1em;
+	display: flex;
+	flex-direction: row;
+	@media only screen and (max-width: 735px) {
+		flex-direction: column;
+	}
+	img {
+		height: 200px;
+		margin: 1em 2em 1em 0;
+		@media only screen and (max-width: 735px) {
+			height: 200px;
+			width: 200px;
+		}
+	}
+	b {
+		color: $sec-text-col;
+	}
+}
+
+#support_overview {
+	$card-bg-col: rgb(190, 190, 190);
+	$card-text-col: rgb(80, 80, 80);
+	padding: 0 2em;
+	margin: 1em;
+	@media only screen and (max-width: 600px) {
+		padding: 0 1em;
+	}
+
+	#add_items_container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		margin-bottom: 2em;
+		@media only screen and (max-width: 1000px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media only screen and (max-width: 510px) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.addArticleDiv {
+			background: lighten($card-bg-col, 15%);
+			display: flex;
+			flex-flow: column wrap;
+			justify-content: center;
+			align-content: space-around;
+			margin: 1em 1em;
+			padding: 0.35em;
+			background-color: darken(rgba(34, 41, 57, 0.5), 5%);
+			border-radius: 10px;
+			transition: all 0.35s ease;
+			text-decoration: none;
+			text-align: center;
+
+			img {
+				display: block;
+				height: 150px;
+				margin: 0 auto;
+			}
+		}
+		.addArticleDiv:hover {
+			background-color: darken(rgba(34, 41, 57, 1), 5%);
+			transform: scale(1.05);
+		}
+	}
+}

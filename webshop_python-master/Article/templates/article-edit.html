@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block content %}
+    <div id="create_book_article_form" class="basic-form">
+        <h2>Edit Article</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-lg">Save Changes</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+    <header id="user_profile_header">
+        <h1 class="headline">Your Profile</h1>
+        <a href="{% url 'edit-user-profile' user.id %}" id="edit_article">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                 class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+            </svg>
+        </a>
+    </header>
+    <div id="user_profile">
+        <img src="{{ extended_user.profile_picture.url }}" alt="profile picture of {{ full_name }}">
+
+        <div id="user_infos">
+            <p><b>User ID:</b> {{ user.username }}</p>
+            <p><b>Name:</b> {{ full_name }}</p>
+            <p><b>E-Mail: </b>{{ user.email }}</p>
+            <p><b>Address:</b> {{ address }}</p>
+            <p><b>Date of Birth:</b> {{ extended_user.date_of_birth }}</p>
+            <p><b>Gender:</b> {{ extended_user.get_gender_display }}</p>
+            <p><b>Phone Number:</b> {{ extended_user.mobile_number }}</p>
+            <p><b>Member of Fulfill since: </b>{{ user.date_joined }}</p>
+        </div>
+    </div>
+
+{% endblock %}

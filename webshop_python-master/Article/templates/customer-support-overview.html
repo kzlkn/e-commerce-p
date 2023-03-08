@@ -1,0 +1,62 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Customer Support Overview{% endblock %}
+<h2>Customer Support Overview</h2>
+
+{% block content %}
+    <h2 class="headline">Add New Items:</h2>
+    <div id="support_overview">
+        <!-- Only superuser or staff should have access to views where articles are created -->
+        {% if user.is_superuser or user.is_staff %}
+            <div id="add_items_container">
+                <a href="{% url 'article-create' 'books' %}" class="addArticleDiv">
+                    <div>
+                        <img src="{% static 'imgs/categories/books_category.svg' %}" alt="Category Books">
+                        <h6>Add Book</h6>
+                    </div>
+                </a>
+                <a href="{% url 'article-create' 'electronics' %}" class="addArticleDiv">
+                    <div>
+                        <img src="{% static 'imgs/categories/electronics_category.svg' %}" alt="Category Electronics">
+                        <h6>Add Electronic Device</h6>
+                    </div>
+                </a>
+                <a href="{% url 'article-create' 'superfoods' %}" class="addArticleDiv">
+                    <div>
+                        <img src="{% static 'imgs/categories/superfood_category.svg' %}" alt="Category Nutrition">
+                        <h6>Add Superfood</h6>
+                    </div>
+                </a>
+                <a href="{% url 'article-create' 'supplements' %}" class="addArticleDiv" alt="Category Supplements">
+                    <div>
+                        <img src="{% static 'imgs/categories/supplements_category.svg' %}">
+                        <h6>Add Supplement</h6>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+
+        <h2>Reported Content:</h2>
+        <ul>
+            {% for key, values in articles_to_comments.items %}
+                <li><a style="color: #bcc5f7" href="{% url 'article-detail' key.id %}">{{ key.get_full_title }}</a></li>
+                <ol>
+                    {% for value in values %}
+                        <li>
+                            <b>{{ value.extended_user.get_full_name_of_user }}</b> wrote:<br>
+                            {{ value.title }}<br>
+                            <i>{{ value.text }}</i><br>
+                            <a style="color: darkkhaki" href="{% url 'comment-report' value.id 'false' %}">Remove Report
+                                flag</a>&nbsp;
+                            <a style="color: crimson" href="{% url 'comment-delete' value.id %}">Delete
+                                Comment</a><br><br>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+
+
